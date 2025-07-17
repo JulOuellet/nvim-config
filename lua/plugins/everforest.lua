@@ -1,11 +1,11 @@
 return {
-    'sainnhe/everforest',
-    enabled = true,
-    priority = 1000,
+  'sainnhe/everforest',
+  enabled = true,
+  priority = 1000,
 
-    config = function()
-        vim.g.everforest_background = 'hard'
-        vim.g.everforest_better_performance = 1
-        vim.cmd.colorscheme 'everforest'
-    end
+  config = function()
+    vim.g.everforest_background = 'hard'
+    vim.g.everforest_better_performance = 1
+    vim.cmd.colorscheme 'everforest'
+  end
 }

@@ -21,6 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.opt.shiftwidth = 4
+vim.opt.number = true
 
 -- Setup lazy.nvim
 require("lazy").setup({
