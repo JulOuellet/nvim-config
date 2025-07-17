@@ -1,8 +1,8 @@
--- lua/plugins/treesitter.lua
 return {
     'nvim-treesitter/nvim-treesitter',
     enabled = true,
     build = ':TSUpdate',
+
     config = function()
         require('nvim-treesitter.configs').setup({
             ensure_installed = { "lua", "nix", "java", "go", "rust" },
