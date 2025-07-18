@@ -2,13 +2,16 @@ return {
   'neovim/nvim-lspconfig',
   enabled = true,
   dependencies = {
-    "folke/lazydev.nvim",
-    ft = "lua",
-    opts = {
-      library = {
-	{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      },
-    },
+    'saghen/blink.cmp',
+    {
+      "folke/lazydev.nvim",
+      ft = "lua",
+      opts = {
+	library = {
+	  { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+	},
+      }
+    }
   },
 
   config = function()
@@ -20,10 +23,11 @@ return {
       severity_sort = true,
     })
 
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
     local lspconfig = require("lspconfig")
 
-    lspconfig.lua_ls.setup({})
-    lspconfig.nixd.setup({})
+    lspconfig.lua_ls.setup { capabilities = capabilities }
+    lspconfig.nixd.setup { capabilities = capabilities }
 
   end
 }

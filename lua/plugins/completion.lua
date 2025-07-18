@@ -1,46 +1,16 @@
 return {
-  {
-    'hrsh7th/nvim-cmp',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
+  'saghen/blink.cmp',
+  dependencies = { 'rafamadriz/friendly-snippets' },
+
+  version = '1.*',
+  opts = {
+    keymap = { preset = 'default' },
+
+    appearance = {
+      use_nvim_cmp_as_default = true,
+      nerd_font_variant = 'mono'
     },
-    enabled = true,
 
-    config = function()
-      local cmp = require('cmp')
-
-      cmp.setup({
-	mapping = cmp.mapping.preset.insert({
-	  ['<C-Space>'] = cmp.mapping.complete(),
-	  ['<CR>'] = cmp.mapping.confirm({ select = true }),
-	  ['<Tab>'] = cmp.mapping.select_next_item(),
-	  ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-	}),
-	sources = cmp.config.sources({
-	  { name = 'nvim_lsp' },
-	  { name = 'buffer' },
-	  { name = 'path' },
-	}),
-      })
-
-      cmp.setup.cmdline(':', {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-	  { name = 'path' },
-	  { name = 'cmdline' },
-	}),
-      })
-
-      cmp.setup.cmdline('/', {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-	  { name = 'buffer' }
-	}
-      })
-    end,
-  }
+    signature = { enabled = true }
+  },
 }
-
