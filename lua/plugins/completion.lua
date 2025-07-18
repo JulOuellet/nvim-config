@@ -1,8 +1,8 @@
 return {
   'saghen/blink.cmp',
   dependencies = { 'rafamadriz/friendly-snippets' },
-
   version = '1.*',
+
   opts = {
     keymap = { preset = 'default' },
 
@@ -11,6 +11,13 @@ return {
       nerd_font_variant = 'mono'
     },
 
-    signature = { enabled = true }
-  },
+    signature = { enabled = true },
+
+    cmdline = {
+      enabled = true,
+      completion = {
+	menu = { auto_show = true }
+      }
+    }
+  }
 }
