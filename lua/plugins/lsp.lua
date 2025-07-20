@@ -28,6 +28,6 @@ return {
 
     lspconfig.lua_ls.setup { capabilities = capabilities }
     lspconfig.nixd.setup { capabilities = capabilities }
-
+    lspconfig.cssls.setup { capabilities = capabilities }
   end
 }
