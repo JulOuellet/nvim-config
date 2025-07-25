@@ -18,8 +18,14 @@ return {
 
     cmdline = {
       enabled = true,
+
       completion = {
-	menu = { auto_show = true }
+	menu = { auto_show = false }
+      },
+
+      keymap = {
+	preset = 'default',
+	['<CR>'] = { 'accept', 'fallback' }
       }
     }
   }
