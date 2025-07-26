@@ -20,7 +20,13 @@ return {
       enabled = true,
 
       completion = {
-	menu = { auto_show = false }
+	menu = {
+	  auto_show = function(ctx)
+	    -- start to auto_show cmdline suggestions only after the first space
+	    -- it avoids conflicts with quick commands like :wq
+	    return string.match(ctx.line, '%s')
+	  end
+	}
       },
 
       keymap = {
