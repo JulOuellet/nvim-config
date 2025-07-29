@@ -15,18 +15,31 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
+-- Keybinds
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.opt.shiftwidth = 4
 vim.opt.number = true
 
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
+
+vim.keymap.set('n', '<leader>dn', function()
+  vim.diagnostic.jump({count = 1})
+  vim.schedule(function()
+    vim.diagnostic.open_float(nil, { focus = false })
+  end)
+end, { desc = 'Next diagnostic' })
+
+vim.keymap.set('n', '<leader>dm', function()
+  vim.diagnostic.jump({count = -1})
+  vim.schedule(function()
+    vim.diagnostic.open_float(nil, { focus = false })
+  end)
+end, { desc = 'Previous diagnostic' })
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- import your plugins
     { import = "plugins" },
   },
   -- automatically check for plugin updates
