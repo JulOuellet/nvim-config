@@ -5,7 +5,16 @@ return {
 
   config = function()
     require('nvim-treesitter.configs').setup({
-      ensure_installed = { "lua", "nix", "java", "go", "rust" },
+      ensure_installed = {
+	"lua",
+	"nix",
+	"css",
+	"shell",
+	"html",
+	"json",
+	"go",
+	"sql"
+      },
       auto_install = true,
       sync_install = false,
       ignore_install = {},
