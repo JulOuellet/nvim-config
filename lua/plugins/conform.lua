@@ -14,6 +14,11 @@ return {
 				sql = { "sql-formatter" },
 				sh = { "shfmt" },
 			},
+			format_on_save = {
+				lsp_fallback = true,
+				async = false,
+				timeout_ms = 500,
+			},
 		})
 
 		-- CTRL + ALT + l to format
