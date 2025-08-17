@@ -11,7 +11,7 @@ return {
 				json = { "prettier", "jq" },
 				html = { "prettier" },
 				css = { "prettier" },
-				sql = { "sql-formatter" },
+				sql = { "pg_format" },
 				sh = { "shfmt" },
 			},
 			format_on_save = {
