@@ -13,6 +13,7 @@ return {
 				css = { "prettier" },
 				sql = { "pg_format" },
 				sh = { "shfmt" },
+				templ = { "templ" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

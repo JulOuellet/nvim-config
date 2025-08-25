@@ -14,6 +14,7 @@ return {
 				"json",
 				"go",
 				"sql",
+				"templ",
 			},
 			auto_install = true,
 			sync_install = false,

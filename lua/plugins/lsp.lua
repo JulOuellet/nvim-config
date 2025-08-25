@@ -52,5 +52,6 @@ return {
 		lspconfig.jsonls.setup({ capabilities = capabilities })
 		lspconfig.gopls.setup({ capabilities = capabilities })
 		lspconfig.sqls.setup({ capabilities = capabilities })
+		lspconfig.templ.setup({ capabilities = capabilities })
 	end,
 }
