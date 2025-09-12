@@ -13,5 +13,6 @@ return {
 			height = { min = 1, max = 0.4 },
 		},
 		input = { enabled = true },
+		words = { enabled = true },
 	},
 }
