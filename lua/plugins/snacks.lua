@@ -12,5 +12,6 @@ return {
 			width = { min = 30, max = 0.3 },
 			height = { min = 1, max = 0.4 },
 		},
+		input = { enabled = true },
 	},
 }
