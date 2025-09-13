@@ -5,7 +5,7 @@ return {
 
 	config = function()
 		require("nvim-tree").setup({
-			git = { enable = true, ignore = false },
+			git = { enable = true, ignore = true },
 			view = { width = 30, side = "left" },
 			renderer = {
 				icons = {

@@ -37,6 +37,11 @@ vim.keymap.set("n", "<leader>dm", function()
 	end)
 end, { desc = "Previous diagnostic" })
 
+vim.keymap.set({ "n", "i", "v" }, "<Up>", "<Nop>")
+vim.keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>")
+vim.keymap.set({ "n", "i", "v" }, "<Left>", "<Nop>")
+vim.keymap.set({ "n", "i", "v" }, "<Right>", "<Nop>")
+
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
