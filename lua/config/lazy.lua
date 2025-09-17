@@ -42,6 +42,10 @@ vim.keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "i", "v" }, "<Left>", "<Nop>")
 vim.keymap.set({ "n", "i", "v" }, "<Right>", "<Nop>")
 
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
+vim.keymap.set("n", "<leader>bc", "<cmd>bdelete<CR>", { silent = true })
+
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
