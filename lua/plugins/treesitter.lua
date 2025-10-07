@@ -15,6 +15,7 @@ return {
 				"go",
 				"sql",
 				"templ",
+				"python",
 			},
 			auto_install = true,
 			sync_install = false,

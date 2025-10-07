@@ -14,6 +14,7 @@ return {
 				sql = { "pg_format" },
 				sh = { "shfmt" },
 				templ = { "templ" },
+				python = { "ruff_imports", "ruff_format" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
