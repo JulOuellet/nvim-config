@@ -21,6 +21,13 @@ return {
 				async = false,
 				timeout_ms = 500,
 			},
+			formatters = {
+				ruff_imports = {
+					command = "ruff",
+					args = { "check", "--select", "I", "--fix", "--stdin-filename", "$FILENAME", "-" },
+					stdin = true,
+				},
+			},
 		})
 
 		-- CTRL + ALT + l to format
