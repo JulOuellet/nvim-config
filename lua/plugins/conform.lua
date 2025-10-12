@@ -22,6 +22,11 @@ return {
 				timeout_ms = 500,
 			},
 			formatters = {
+				pg_format = {
+					command = "pg_format",
+					args = { "-B" },
+					stdin = true,
+				},
 				ruff_imports = {
 					command = "ruff",
 					args = { "check", "--select", "I", "--fix", "--stdin-filename", "$FILENAME", "-" },
