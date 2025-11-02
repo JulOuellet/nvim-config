@@ -14,5 +14,68 @@ return {
 		},
 		input = { enabled = true },
 		words = { enabled = true },
+		explorer = { enabled = true },
+		picker = {
+			enabled = true,
+		},
+	},
+
+	keys = {
+		{
+			"<leader>ff",
+			function()
+				Snacks.picker.files()
+			end,
+			desc = "Find Files",
+		},
+		{
+			"<leader>fg",
+			function()
+				Snacks.picker.grep()
+			end,
+			desc = "Find Grep",
+		},
+		{
+			"<leader>fb",
+			function()
+				Snacks.picker.buffers()
+			end,
+			desc = "Find Buffers",
+		},
+		{
+			"<leader>fr",
+			function()
+				Snacks.picker.recent()
+			end,
+			desc = "Find Recent",
+		},
+		{
+			"<leader>fd",
+			function()
+				Snacks.picker.diagnostics()
+			end,
+			desc = "Find Diagnostics",
+		},
+		{
+			"<leader>gb",
+			function()
+				Snacks.picker.git_branches()
+			end,
+			desc = "Find Git Branches",
+		},
+		{
+			"<leader>gc",
+			function()
+				Snacks.picker.git_commits()
+			end,
+			desc = "Find Git Commits",
+		},
+		{
+			"<leader>gd",
+			function()
+				Snacks.picker.git_diff()
+			end,
+			desc = "Find Git Diff",
+		},
 	},
 }

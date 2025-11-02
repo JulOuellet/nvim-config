@@ -21,22 +21,6 @@ vim.g.maplocalleader = "\\"
 vim.opt.shiftwidth = 4
 vim.opt.number = true
 
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic" })
-
-vim.keymap.set("n", "<leader>dn", function()
-	vim.diagnostic.jump({ count = 1 })
-	vim.schedule(function()
-		vim.diagnostic.open_float(nil, { focus = false })
-	end)
-end, { desc = "Next diagnostic" })
-
-vim.keymap.set("n", "<leader>dm", function()
-	vim.diagnostic.jump({ count = -1 })
-	vim.schedule(function()
-		vim.diagnostic.open_float(nil, { focus = false })
-	end)
-end, { desc = "Previous diagnostic" })
-
 vim.keymap.set({ "n", "i", "v" }, "<Up>", "<Nop>")
 vim.keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>")
 vim.keymap.set({ "n", "i", "v" }, "<Left>", "<Nop>")
