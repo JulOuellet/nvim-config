@@ -22,6 +22,13 @@ return {
 
 	keys = {
 		{
+			"<leader>e",
+			function()
+				Snacks.explorer()
+			end,
+			desc = "Toggle Explorer",
+		},
+		{
 			"<leader>ff",
 			function()
 				Snacks.picker.files()
