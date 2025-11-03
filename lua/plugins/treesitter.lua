@@ -16,6 +16,7 @@ return {
 				"sql",
 				"templ",
 				"python",
+				"java",
 			},
 			auto_install = true,
 			sync_install = false,
