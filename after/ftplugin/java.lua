@@ -60,11 +60,13 @@ local config = {
 			maven = {
 				downloadSources = true,
 			},
-			implementationsCodeLens = {
-				enabled = true,
-			},
-			referencesCodeLens = {
-				enabled = true,
+			codeLens = {
+				implementations = {
+					enabled = true,
+				},
+				references = {
+					enabled = true,
+				},
 			},
 			references = {
 				includeDecompiledSources = true,
