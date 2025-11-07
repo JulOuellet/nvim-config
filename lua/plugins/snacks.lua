@@ -1,3 +1,5 @@
+local Snacks = require("snacks")
+
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -69,13 +71,6 @@ return {
 				Snacks.picker.git_branches()
 			end,
 			desc = "Find Git Branches",
-		},
-		{
-			"<leader>gc",
-			function()
-				Snacks.picker.git_commits()
-			end,
-			desc = "Find Git Commits",
 		},
 		{
 			"<leader>gd",
