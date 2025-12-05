@@ -14,13 +14,29 @@ local workspace_dir = vim.fn.stdpath("data") .. "/jdtls-workspace/" .. project_n
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 
-local jdtls_install = vim.fn.exepath("jdtls")
-if jdtls_install == "" then
-	vim.notify("jdtls not found in PATH", vim.log.levels.ERROR)
+-- Find JDTLS installation
+local jdtls_path = "/nix/store/6gllwzji8fba4q0508mlrlayjbxf80lj-jdt-language-server-1.46.1/share/java/jdtls"
+local launcher_jar = jdtls_path .. "/plugins/org.eclipse.equinox.launcher_1.7.0.v20250331-1702.jar"
+local nix_config_dir = jdtls_path .. "/config_linux"
+
+-- NixOS workaround: JDTLS tries to write to its config directory, but NixOS store is read-only
+-- We need to copy the config files to a writable location and use that instead
+local home = os.getenv("HOME")
+local config_dir = home .. "/.local/share/nvim/jdtls-config"
+
+if vim.fn.filereadable(launcher_jar) == 0 then
+	vim.notify("JDTLS launcher jar not found: " .. launcher_jar, vim.log.levels.ERROR)
 	return
 end
 
-local home = os.getenv("HOME")
+-- Copy NixOS config files to writable location on first run
+-- This prevents "Read-only file system" errors when JDTLS tries to extract native libraries
+if vim.fn.isdirectory(config_dir) == 0 then
+	vim.fn.mkdir(config_dir, "p")
+	vim.fn.system({ "cp", "-r", nix_config_dir .. "/.", config_dir })
+	vim.notify("Copied JDTLS config to writable location: " .. config_dir, vim.log.levels.INFO)
+end
+
 local lombok_path = home .. "/.local/share/nvim/lombok.jar"
 
 if vim.fn.filereadable(lombok_path) == 0 then
@@ -40,11 +56,25 @@ end
 
 local config = {
 	cmd = {
-		"jdtls",
+		"java",
+		"--add-modules=ALL-SYSTEM",
+		"--add-opens=java.base/java.util=ALL-UNNAMED",
+		"--add-opens=java.base/java.lang=ALL-UNNAMED",
+		"--add-opens=java.base/java.nio.file=ALL-UNNAMED",
+		"--add-opens=java.base/java.net=ALL-UNNAMED",
+		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
+		"-Dosgi.bundles.defaultStartLevel=4",
+		"-Declipse.product=org.eclipse.jdt.ls.core.product",
+		"-Dlog.protocol=true",
+		"-Dlog.level=ALL",
+		"-Xmx1g",
+		"-javaagent:" .. lombok_path,
+		"-jar",
+		launcher_jar,
+		"-configuration",
+		config_dir,
 		"-data",
 		workspace_dir,
-		"--jvm-arg=-javaagent:" .. lombok_path,
-		"--jvm-arg=-Xbootclasspath/a:" .. lombok_path,
 	},
 
 	root_dir = root_dir,
@@ -59,6 +89,9 @@ local config = {
 			},
 			maven = {
 				downloadSources = true,
+			},
+			apt = {
+				enabled = false,
 			},
 			codeLens = {
 				implementations = {
