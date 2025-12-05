@@ -9,7 +9,6 @@ return {
 				"lua",
 				"nix",
 				"css",
-				"shell",
 				"html",
 				"json",
 				"go",
