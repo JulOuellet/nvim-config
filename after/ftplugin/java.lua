@@ -156,6 +156,18 @@ local config = {
 			require("jdtls").organize_imports()
 		end, vim.tbl_extend("force", opts, { desc = "Organize imports" }))
 
+		-- Add a missing import
+		vim.keymap.set("n", "<leader>ji", function()
+			vim.lsp.buf.code_action({
+				filter = function(action)
+					return action.kind and action.kind:match("^source.addMissingImports")
+						or action.title:match("^Import")
+						or action.title:match("^Add import")
+				end,
+				apply = true,
+			})
+		end, vim.tbl_extend("force", opts, { desc = "Add a missing import" }))
+
 		-- Extract variable
 		vim.keymap.set("n", "<leader>jv", function()
 			require("jdtls").extract_variable()
