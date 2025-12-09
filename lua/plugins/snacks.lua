@@ -80,7 +80,7 @@ return {
 			function()
 				Snacks.picker.lsp_definitions()
 			end,
-			desc = "Goto Definition",
+			desc = "Go to Definition",
 		},
 		{
 			"gr",
@@ -95,14 +95,14 @@ return {
 			function()
 				Snacks.picker.lsp_implementations()
 			end,
-			desc = "Goto Implementation",
+			desc = "Go to Implementation",
 		},
 		{
 			"gy",
 			function()
 				Snacks.picker.lsp_type_definitions()
 			end,
-			desc = "Goto T[y]pe Definition",
+			desc = "Go to T[y]pe Definition",
 		},
 		{
 			"<leader>ss",

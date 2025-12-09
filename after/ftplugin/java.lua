@@ -54,6 +54,24 @@ if vim.fn.filereadable(lombok_path) == 0 then
 	end
 end
 
+-- Java test budles for running tests
+local bundles = {}
+
+-- Find vscode-java-test JARs from Nix store
+local java_test_nix_path = vim.fn.glob("/nix/store/*vscode-java-test*/share/vscode/extensions/*/server/*.jar", true)
+if java_test_nix_path ~= "" then
+	vim.list_extend(bundles, vim.split(java_test_nix_path, "\n"))
+end
+
+-- Find vscode-java-debug JARs from Nix store
+local java_debug_nix_path = vim.fn.glob(
+	"/nix/store/*vscode-java-debug*/share/vscode/extensions/*/server/com.microsoft.java.debug.plugin-*.jar",
+	true
+)
+if java_debug_nix_path ~= "" then
+	vim.list_extend(bundles, vim.split(java_debug_nix_path, "\n"))
+end
+
 local config = {
 	cmd = {
 		"java",
@@ -143,13 +161,18 @@ local config = {
 	},
 
 	init_options = {
-		bundles = {},
+		bundles = bundles,
 	},
 
 	capabilities = require("blink.cmp").get_lsp_capabilities(),
 
 	on_attach = function(client, bufnr)
 		local opts = { buffer = bufnr, silent = true }
+
+		require("jdtls").setup_dap({
+			hotcodereplace = "auto",
+			config_overrides = {},
+		})
 
 		-- Organize imports
 		vim.keymap.set("n", "<leader>jo", function()
@@ -197,6 +220,16 @@ local config = {
 				callback = vim.lsp.codelens.refresh,
 			})
 		end
+
+		-- Test class
+		vim.keymap.set("n", "<leader>jt", function()
+			require("jdtls").test_class()
+		end, vim.tbl_extend("force", opts, { desc = "Test class" }))
+
+		-- Test method
+		vim.keymap.set("n", "<leader>jT", function()
+			require("jdtls").test_nearest_method()
+		end, vim.tbl_extend("force", opts, { desc = "Test nearest method" }))
 	end,
 }
 
