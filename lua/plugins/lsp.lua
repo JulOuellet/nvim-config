@@ -50,5 +50,6 @@ return {
 		lspconfig.sqls.setup({ capabilities = capabilities })
 		lspconfig.templ.setup({ capabilities = capabilities })
 		lspconfig.pyright.setup({ capabilities = capabilities })
+		lspconfig.ts_ls.setup({ capabilities = capabilities })
 	end,
 }

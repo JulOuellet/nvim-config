@@ -16,6 +16,8 @@ return {
 				templ = { "templ" },
 				python = { "ruff_imports", "ruff_format" },
 				java = {}, -- lsp fallback
+				javascript = { "prettier" },
+				typescript = { "prettier" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
