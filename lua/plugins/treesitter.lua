@@ -5,19 +5,8 @@ return {
 
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = {
-				"lua",
-				"nix",
-				"css",
-				"html",
-				"json",
-				"go",
-				"sql",
-				"templ",
-				"python",
-				"java",
-			},
-			auto_install = true,
+			ensure_installed = {}, -- Managed in NixOS module
+			auto_install = false,
 			sync_install = false,
 			ignore_install = {},
 			modules = {},
