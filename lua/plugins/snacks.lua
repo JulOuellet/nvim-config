@@ -16,6 +16,7 @@ return {
 		words = { enabled = true },
 		explorer = { enabled = true },
 		picker = { enabled = true },
+		statuscolumn = { enabled = true },
 	},
 
 	keys = {

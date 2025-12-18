@@ -21,6 +21,7 @@ vim.g.maplocalleader = "\\"
 vim.opt.shiftwidth = 4
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.cursorlineopt = "both"
 
 vim.keymap.set({ "n", "i", "v" }, "<Up>", "<Nop>")
 vim.keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>")
