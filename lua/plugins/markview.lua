@@ -4,5 +4,6 @@ return {
 	enabled = true,
 	dependencies = {
 		"saghen/blink.cmp",
+		"nvim-treesitter/nvim-treesitter",
 	},
 }
