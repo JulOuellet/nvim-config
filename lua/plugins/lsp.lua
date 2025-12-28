@@ -51,6 +51,12 @@ return {
 				hint = {
 					enable = true,
 				},
+
+				Lua = {
+					diagnostics = {
+						globals = { "vim", "Snacks" },
+					},
+				},
 			},
 		})
 
