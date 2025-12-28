@@ -4,6 +4,16 @@ return {
 	config = function()
 		require("zk").setup({
 			picker = "snacks_picker",
+			lsp = {
+				config = {
+					cmd = { "zk", "lsp" },
+					name = "zk",
+				},
+				auto_attach = {
+					enabled = true,
+					filetypes = { "markdown" },
+				},
+			},
 		})
 
 		local opts = { noremap = true, silent = true }
@@ -30,6 +40,15 @@ return {
 			"<leader>zb",
 			"<Cmd>ZkBacklinks<CR>",
 			vim.tbl_extend("force", opts, { desc = "Find zk note backlinks" })
+		)
+
+		vim.keymap.set("n", "<leader>zt", "<Cmd>ZkTags<CR>", vim.tbl_extend("force", opts, { desc = "Find zk tags" }))
+
+		vim.keymap.set(
+			"n",
+			"<leader>zl",
+			"<Cmd>ZkLinks<CR>",
+			vim.tbl_extend("force", opts, { desc = "Find zk note foward links" })
 		)
 	end,
 }
