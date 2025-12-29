@@ -1,6 +1,6 @@
 return {
 	"Isrothy/neominimap.nvim",
-	enabled = true,
+	enabled = false,
 	lazy = false,
 
 	keys = {
