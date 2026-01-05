@@ -17,6 +17,13 @@ return {
 		explorer = { enabled = true },
 		picker = { enabled = true },
 		statuscolumn = { enabled = true },
+		indent = {
+			enabled = true,
+			scope = {
+				enabled = true,
+				hl = "SnacksPickerBorder",
+			},
+		},
 	},
 
 	keys = {
