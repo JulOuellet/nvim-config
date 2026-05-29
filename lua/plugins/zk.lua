@@ -18,27 +18,27 @@ return {
 
 		local opts = { noremap = true, silent = true }
 
-		vim.keymap.set("n", "<leader>zn", function()
+		vim.keymap.set("n", "<leader>zna", function()
 			Snacks.input({
 				prompt = "Title: ",
 			}, function(title)
 				if title and title ~= "" then
-					require("zk").new({ title = title })
+					require("zk").new({ title = title, dir = "atomics" })
 				end
 			end)
-		end, { desc = "Create a new note" })
+		end, { desc = "Create a new atomic note" })
 
-		vim.keymap.set("n", "<leader>zm", function()
+		vim.keymap.set("n", "<leader>znr", function()
 			Snacks.input({
 				prompt = "Title: ",
 			}, function(title)
 				if title and title ~= "" then
-					require("zk").new({ title = title, dir = "media" })
+					require("zk").new({ title = title, dir = "references" })
 				end
 			end)
-		end, { desc = "Create a new media note" })
+		end, { desc = "Create a new reference note" })
 
-		vim.keymap.set("n", "<leader>zj", function()
+		vim.keymap.set("n", "<leader>znj", function()
 			Snacks.input({
 				prompt = "Title: ",
 			}, function(title)
