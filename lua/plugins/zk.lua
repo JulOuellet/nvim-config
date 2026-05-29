@@ -28,6 +28,26 @@ return {
 			end)
 		end, { desc = "Create a new note" })
 
+		vim.keymap.set("n", "<leader>zm", function()
+			Snacks.input({
+				prompt = "Title: ",
+			}, function(title)
+				if title and title ~= "" then
+					require("zk").new({ title = title, dir = "media" })
+				end
+			end)
+		end, { desc = "Create a new media note" })
+
+		vim.keymap.set("n", "<leader>zj", function()
+			Snacks.input({
+				prompt = "Title: ",
+			}, function(title)
+				if title and title ~= "" then
+					require("zk").new({ title = title, dir = "journal" })
+				end
+			end)
+		end, { desc = "Create a new journal note" })
+
 		vim.keymap.set(
 			"n",
 			"<leader>zf",
