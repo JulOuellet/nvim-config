@@ -34,14 +34,14 @@
           templ
           pyright
           jdt-language-server
-          nodePackages.typescript-language-server
+          typescript-language-server
 
           # formatter packages
           gofumpt
           gotools
           alejandra
           stylua
-          nodePackages.prettier
+          prettier
           pgformatter
           jq
           shfmt
