@@ -102,7 +102,20 @@ return {
 
 		lspconfig.sqls.setup({ capabilities = capabilities })
 		lspconfig.templ.setup({ capabilities = capabilities })
-		lspconfig.pyright.setup({ capabilities = capabilities })
+		lspconfig.pyright.setup({
+			capabilities = capabilities,
+			settings = {
+				python = {
+					analysis = {
+						diagnosticSeverityOverrides = {
+							reportOptionalMemberAccess = "hint",
+							reportArgumentType = "hint",
+							reportAttributeAccessIssue = "hint",
+						},
+					},
+				},
+			},
+		})
 		lspconfig.nixd.setup({ capabilities = capabilities })
 		lspconfig.cssls.setup({ capabilities = capabilities })
 		lspconfig.bashls.setup({ capabilities = capabilities })
