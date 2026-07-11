@@ -1,6 +1,6 @@
 return {
 	"JulOuellet/bzl.nvim",
-	-- tmp, for local devlopment
-	-- dir = vim.fn.expand("~/projects/bzl.nvim"),
+	-- loads ~/projects/bzl.nvim when present (see dev in config/lazy.lua)
+	dev = true,
 	opts = {},
 }

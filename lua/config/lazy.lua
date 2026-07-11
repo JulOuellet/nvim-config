@@ -37,6 +37,15 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 	},
+	-- plugins with dev = true load from ~/projects when present,
+	-- and fall back to their github repo elsewhere
+	dev = {
+		path = "~/projects",
+		fallback = true,
+	},
+	-- write the lockfile to the editable config repo instead of the
+	-- read-only nix store copy
+	lockfile = vim.fn.expand("~/.nvim/nvim-config/lazy-lock.json"),
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })
