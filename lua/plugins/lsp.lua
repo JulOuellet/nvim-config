@@ -108,9 +108,9 @@ return {
 				python = {
 					analysis = {
 						diagnosticSeverityOverrides = {
-							reportOptionalMemberAccess = "hint",
-							reportArgumentType = "hint",
-							reportAttributeAccessIssue = "hint",
+							reportOptionalMemberAccess = "information",
+							reportArgumentType = "information",
+							reportAttributeAccessIssue = "information",
 						},
 					},
 				},
