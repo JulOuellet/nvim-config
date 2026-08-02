@@ -4,48 +4,9 @@ return {
 	dev = true,
 	cmd = "Bzl",
 	keys = {
-		{
-			"<leader>bt",
-			function()
-				require("bzl").targets({ filter = "testable", here = true })
-			end,
-			desc = "Bazel Tests (project)",
-		},
-		{
-			"<leader>bT",
-			function()
-				require("bzl").targets({ filter = "testable" })
-			end,
-			desc = "Bazel Tests (workspace)",
-		},
-		{
-			"<leader>br",
-			function()
-				require("bzl").targets({ filter = "runnable", here = true })
-			end,
-			desc = "Bazel Runnables (project)",
-		},
-		{
-			"<leader>bR",
-			function()
-				require("bzl").targets({ filter = "runnable" })
-			end,
-			desc = "Bazel Runnables (workspace)",
-		},
-		{
-			"<leader>bb",
-			function()
-				require("bzl").targets()
-			end,
-			desc = "Bazel All Targets",
-		},
-		{
-			"<leader>bs",
-			function()
-				require("bzl").sync()
-			end,
-			desc = "Bazel Sync",
-		},
+		{ "<leader>bs", "<cmd>Bzl sync<cr>", desc = "Bazel Sync" },
+		{ "<leader>bt", "<cmd>Bzl targets<cr>", desc = "Bazel Targets" },
+		{ "<leader>bh", "<cmd>Bzl targets here<cr>", desc = "Bazel Targets (here)" },
 	},
 	opts = {},
 }
