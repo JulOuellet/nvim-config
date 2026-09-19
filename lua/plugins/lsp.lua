@@ -44,15 +44,15 @@ return {
 
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		local lspconfig = require("lspconfig")
+		local util = require("lspconfig.util")
 
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
 			settings = {
-				hint = {
-					enable = true,
-				},
-
 				Lua = {
+					hint = {
+						enable = true,
+					},
 					diagnostics = {
 						globals = { "vim", "Snacks" },
 					},
@@ -62,6 +62,14 @@ return {
 
 		lspconfig.gopls.setup({
 			capabilities = capabilities,
+
+			root_dir = function(fname)
+				return vim.fs.root(fname, {
+					"MODULE.bazel",
+					"WORKSPACE.bazel",
+					"WORKSPACE",
+				}) or util.root_pattern("go.work", "go.mod", ".git")(fname)
+			end,
 			settings = {
 				gopls = {
 					hints = {
