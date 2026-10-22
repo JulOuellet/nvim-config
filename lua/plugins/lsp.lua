@@ -42,12 +42,11 @@ return {
 			end,
 		})
 
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
-		local lspconfig = require("lspconfig")
-		local util = require("lspconfig.util")
+		vim.lsp.config("*", {
+			capabilities = require("blink.cmp").get_lsp_capabilities(),
+		})
 
-		lspconfig.lua_ls.setup({
-			capabilities = capabilities,
+		vim.lsp.config("lua_ls", {
 			settings = {
 				Lua = {
 					hint = {
@@ -60,15 +59,14 @@ return {
 			},
 		})
 
-		lspconfig.gopls.setup({
-			capabilities = capabilities,
-
-			root_dir = function(fname)
-				return vim.fs.root(fname, {
+		vim.lsp.config("gopls", {
+			root_dir = function(bufnr, on_dir)
+				local fname = vim.api.nvim_buf_get_name(bufnr)
+				on_dir(vim.fs.root(fname, {
 					"MODULE.bazel",
 					"WORKSPACE.bazel",
 					"WORKSPACE",
-				}) or util.root_pattern("go.work", "go.mod", ".git")(fname)
+				}) or vim.fs.root(fname, { "go.work", "go.mod", ".git" }))
 			end,
 			settings = {
 				gopls = {
@@ -85,8 +83,7 @@ return {
 			},
 		})
 
-		lspconfig.ts_ls.setup({
-			capabilities = capabilities,
+		vim.lsp.config("ts_ls", {
 			settings = {
 				typescript = {
 					inlayHints = {
@@ -108,10 +105,7 @@ return {
 			},
 		})
 
-		lspconfig.sqls.setup({ capabilities = capabilities })
-		lspconfig.templ.setup({ capabilities = capabilities })
-		lspconfig.pyright.setup({
-			capabilities = capabilities,
+		vim.lsp.config("pyright", {
 			settings = {
 				python = {
 					analysis = {
@@ -124,14 +118,7 @@ return {
 				},
 			},
 		})
-		lspconfig.nixd.setup({ capabilities = capabilities })
-		lspconfig.cssls.setup({ capabilities = capabilities })
-		lspconfig.bashls.setup({ capabilities = capabilities })
-		lspconfig.html.setup({ capabilities = capabilities })
-		lspconfig.jsonls.setup({ capabilities = capabilities })
-
-		lspconfig.rust_analyzer.setup({
-			capabilities = capabilities,
+		vim.lsp.config("rust_analyzer", {
 			settings = {
 				["rust-analyzer"] = {
 					check = { command = "clippy" },
@@ -139,6 +126,21 @@ return {
 				},
 			},
 		})
-		lspconfig.taplo.setup({ capabilities = capabilities })
+
+		vim.lsp.enable({
+			"lua_ls",
+			"gopls",
+			"ts_ls",
+			"sqls",
+			"templ",
+			"pyright",
+			"nixd",
+			"cssls",
+			"bashls",
+			"html",
+			"jsonls",
+			"rust_analyzer",
+			"taplo",
+		})
 	end,
 }
