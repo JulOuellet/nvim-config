@@ -153,6 +153,7 @@ return {
 			"rust_analyzer",
 			"taplo",
 			"clangd",
+			"just",
 		})
 	end,
 }

@@ -38,6 +38,7 @@
           rust-analyzer
           taplo
           clang-tools
+          just-lsp
 
           # formatter packages
           gofumpt
@@ -51,6 +52,7 @@
           ruff
           rustfmt
           clippy
+          just
         ];
       in {
         devShells.default = pkgs.mkShell {

@@ -27,6 +27,7 @@ return {
 			"rust",
 			"toml",
 			"c",
+			"just",
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {

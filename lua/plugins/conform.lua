@@ -21,6 +21,7 @@ return {
 				rust = { "rustfmt" },
 				toml = { "taplo" },
 				c = { "clang_format" },
+				just = { "just" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
