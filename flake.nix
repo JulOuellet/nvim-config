@@ -37,6 +37,7 @@
           typescript-language-server
           rust-analyzer
           taplo
+          clang-tools
 
           # formatter packages
           gofumpt

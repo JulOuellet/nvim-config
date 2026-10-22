@@ -118,12 +118,23 @@ return {
 				},
 			},
 		})
+
 		vim.lsp.config("rust_analyzer", {
 			settings = {
 				["rust-analyzer"] = {
 					check = { command = "clippy" },
 					cargo = { allFeatures = true },
 				},
+			},
+		})
+
+		vim.lsp.config("clangd", {
+			cmd = {
+				"clangd",
+				"--background-index",
+				"--clang-tidy",
+				"--header-insertion=iwyu",
+				"--completion-style=detailed",
 			},
 		})
 
@@ -141,6 +152,7 @@ return {
 			"jsonls",
 			"rust_analyzer",
 			"taplo",
+			"clangd",
 		})
 	end,
 }

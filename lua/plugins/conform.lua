@@ -20,6 +20,7 @@ return {
 				typescript = { "prettier" },
 				rust = { "rustfmt" },
 				toml = { "taplo" },
+				c = { "clang_format" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
