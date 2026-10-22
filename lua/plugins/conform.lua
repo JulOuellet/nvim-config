@@ -18,6 +18,8 @@ return {
 				java = {}, -- lsp fallback
 				javascript = { "prettier" },
 				typescript = { "prettier" },
+				rust = { "rustfmt" },
+				toml = { "taplo" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

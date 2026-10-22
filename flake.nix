@@ -35,6 +35,8 @@
           pyright
           jdt-language-server
           typescript-language-server
+          rust-analyzer
+          taplo
 
           # formatter packages
           gofumpt
@@ -46,6 +48,8 @@
           jq
           shfmt
           ruff
+          rustfmt
+          clippy
         ];
       in {
         devShells.default = pkgs.mkShell {

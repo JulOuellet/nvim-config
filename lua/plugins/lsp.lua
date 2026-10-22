@@ -129,5 +129,16 @@ return {
 		lspconfig.bashls.setup({ capabilities = capabilities })
 		lspconfig.html.setup({ capabilities = capabilities })
 		lspconfig.jsonls.setup({ capabilities = capabilities })
+
+		lspconfig.rust_analyzer.setup({
+			capabilities = capabilities,
+			settings = {
+				["rust-analyzer"] = {
+					check = { command = "clippy" },
+					cargo = { allFeatures = true },
+				},
+			},
+		})
+		lspconfig.taplo.setup({ capabilities = capabilities })
 	end,
 }
